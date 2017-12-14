@@ -12,9 +12,9 @@ import MoBettaParser
 main = do
   args <- getArgs
   let fileName = head args
-  putstrLn $ "MoBetta running file: " ++ fileName ++ " ...\n"
+  putStrLn $ "MoBetta running file: " ++ fileName ++ " ...\n"
   handle <- openFile fileName ReadMode
-  contents <- hgetContents handle  -- get contents of file lazily
+  contents <- hGetContents handle  -- get contents of file lazily
   let pr = mbparse fileName contents
   case pr of
     Right prog -> evalStateT (makeProgram prog) emptyEnv
