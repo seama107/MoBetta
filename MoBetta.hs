@@ -7,7 +7,7 @@ import Text.Megaparsec.Error
 
 
 import MoBettaParser
--- import MoBettaEngine
+import MoBettaEngine
 
 main = do
   args <- getArgs
