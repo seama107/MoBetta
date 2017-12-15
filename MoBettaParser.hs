@@ -41,6 +41,7 @@ statementParser = choice
     messageStmt = do
       lexeme (string "message")
       s <- stringLiteral
+      lexeme (string "")
       return (Msg s)
     ifStmt = do
       lexeme (string "if")
