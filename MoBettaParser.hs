@@ -14,7 +14,9 @@ import MoBettaAST
 type Parser = Parsec Void String
 
 
-programParser = sepEndBy1 statementParser semicolon <?>  "program"
+programParser = do
+  spaceConsumer
+  sepEndBy1 statementParser semicolon <?>  "program"
 
 
 statementParser = choice
@@ -37,7 +39,7 @@ statementParser = choice
       v <- identifier
       return (Read v)
     messageStmt = do
-      lexeme (string "msg")
+      lexeme (string "message")
       s <- stringLiteral
       return (Msg s)
     ifStmt = do
